@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lc refresh</fullName>
+    <types>
+        <members>RelatedContactsController</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>RelatedContacts</members>
+        <members>RelatedContactsEvent</members>
+        <members>RelatedEditContactsOverlay</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <version>47.0</version>
+</Package>

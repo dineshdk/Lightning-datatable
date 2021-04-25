@@ -1,0 +1,16 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" controller="RelatedContactsController" access="global" >
+    <lightning:overlayLibrary aura:id="overlayLib" />
+    <aura:attribute name="recordIds" type="Object"/>
+    <aura:attribute name="issearching"    type="Boolean" default="false"/>
+    <aura:attribute name="value" type="List" default="option1"/>
+    <aura:registerEvent name="fromModal" type="c:RelatedContactsEvent"/>
+    <lightning:recordEditForm objectApiName="Contact" aura:id="FSU" onsubmit="{!c.handleSubmit}">
+        <lightning:inputField fieldName="AccountId" />
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_5-of-12"/>
+            <lightning:button name="Save" label="Save" variant="brand" type="submit" class="slds-m-top_small slds-m-left_medium"/>
+        </div>
+    </lightning:recordEditForm>
+    <lightning:spinner aura:id="mySpinner" alternativeText="Loading" size="medium" style="margin-top: 47px;margin-bottom: 47px;" class="slds-hide" />
+    
+</aura:component>

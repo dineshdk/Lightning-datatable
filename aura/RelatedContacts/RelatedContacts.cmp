@@ -1,0 +1,31 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="RelatedContactsController">
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="selectedRows" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="selectedRowsCount" type="Integer" default="0"/>
+    <aura:attribute name="maxRowSelection" type="Integer" default="5"/>
+    <aura:handler name="init" value="this" action="{!c.doInit}" />
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <aura:attribute name="message" type="String"/>
+    <aura:attribute name="defaultRows" type="List" default="[]" description="reset selected rows" />
+    <aura:handler name="fromModal" event="c:RelatedContactsEvent"
+                  action="{!c.fromModal}" />
+    <aura:attribute name="sortedBy" type="String" default="Name"/>
+    <aura:attribute name="sortedDirection" type="String" default="asc"/>
+    
+    <!-- the container element determine the height of the datatable -->
+    <div>
+        <lightning:datatable
+                             columns="{! v.columns }"
+                             data="{! v.data }"
+                             keyField="id"
+                             onrowselection="{! c.updateSelectedText }"
+                             selectedRows="{!v.defaultRows}"
+                             onsort="{!c.updateColumnSorting}"
+                             sortedBy="{!v.sortedBy}"  
+                             sortedDirection="{!v.sortedDirection}"/>
+        <lightning:button variant="brand" label="Transfer contacts" title="Transfer" class="slds-m-top_large slds-align_absolute-center" onclick="{! c.editWorkOrders }" />
+    </div>
+    <lightning:spinner aura:id="mySpinner" alternativeText="Loading" size="medium" style="margin-top: 47px;margin-bottom: 47px;" class="slds-hide" />
+</aura:component>
