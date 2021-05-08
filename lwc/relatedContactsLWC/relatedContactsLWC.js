@@ -1,5 +1,5 @@
 import { LightningElement,wire,track,api } from 'lwc';
-import getRelatedWorkOrders from '@salesforce/apex/RelatedContactsController.getRelatedContacts';
+import getRelatedContacts from '@salesforce/apex/RelatedContactsController.getRelatedContacts';
 import { NavigationMixin} from 'lightning/navigation';
 
 
@@ -31,7 +31,7 @@ export default class DataTable extends NavigationMixin(LightningElement) {
     renderedCallback(){
         if(this.hasRendered){
 
-        getRelatedWorkOrders({recordId: this.recordId })
+            getRelatedContacts({recordId: this.recordId })
         .then(data=>{
 
             if (data) {  
